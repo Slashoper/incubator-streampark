@@ -170,7 +170,7 @@ print_logo() {
 }
 
 build() {
-  if [[ -x "$PRG_DIR/mvn" ]]; then
+  if [[ -x "$MAVEN_HOME/bin/mvn" ]]; then
     echo_g "Apache StreamPark, building..."
     "$PRG_DIR/mvnw" -Pshaded,webapp,dist -DskipTests clean install
     if [[ $? -eq 0 ]]; then
@@ -179,7 +179,7 @@ build() {
       dist: $(cd "$PRG_DIR" &>/dev/null && pwd)/dist\n"""
     fi
   else
-    echo_r "permission denied: $PRG_DIR/mvn, please check."
+    echo_r "permission denied: $MAVEN_HOME/bin/mvn, please check."
     exit 1
   fi
 }
